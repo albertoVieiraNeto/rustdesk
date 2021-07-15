@@ -30,13 +30,13 @@ class ConnectStatus: Reactor.Component {
 
     function getConnectStatusStr() {
         if (service_stopped) {
-            return "Serviço não esta rodando";
+            return "Service is not running";
         } else if (connect_status == -1) {
-            return "Erro, por favor verifique sua conexão";
+            return "Not ready. Please check your connection";
         } else if (connect_status == 0) {
-            return "Conectando...";
+            return "Connecting to the RustDesk network...";
         }
-        return "Pronto";
+        return "Ready";
     }
 
     event click $(.connect-status .link) () {
@@ -210,10 +210,10 @@ class MyIdMenu: Reactor.Component {
                 <li #enable-tunnel><span>{svg_checkmark}</span>Enable TCP Tunneling</li>
                 <AudioInputs />
                 <div .separator />
-                <li #whitelist title="Somente IPs na lista branca podem acessar">IP Whitelisting</li>
+                <li #whitelist title="Only whitelisted IP can access me">IP Whitelisting</li>
                 <li #custom-server>ID/Relay Server</li>
                 <div .separator />
-                <li #stop-service>{service_stopped ? "Iniciar Serviço" : "Parar Serviço"}</li>
+                <li #stop-service>{service_stopped ? "Start service" : "Stop service"}</li>
                 <div .separator />
                 <li #forum>Forum</li>
                 <li #about>About {handler.get_app_name()}</li>
@@ -246,7 +246,7 @@ class MyIdMenu: Reactor.Component {
         }
         if (me.id == "whitelist") {
             var old_value = (configOptions["whitelist"] || "").split(",").join("\n");
-            handler.msgbox("custom-whitelist", "Lista branca de IPs", "<div .form> \
+            handler.msgbox("custom-whitelist", "IP Whitelisting", "<div .form> \
             <textarea spellcheck=\"false\" name=\"text\" novalue=\"0.0.0.0\" style=\"overflow: scroll-indicator; height: 160px; font-size: 1.2em; padding: 0.5em;\">" + old_value + "</textarea>\
             </div> \
             ", function(res=null) {
@@ -263,15 +263,15 @@ class MyIdMenu: Reactor.Component {
                 }
                 if (value == old_value) return;
                 configOptions["whitelist"] = value.replace("\n", ",");
-                stdout.println("Lista Branca atualizada");
+                stdout.println("whitelist updated");
                 handler.set_options(configOptions);
             }, 300);
         } else if (me.id == "custom-server") {
             var old_relay = configOptions["relay-server"] || "";
             var old_id = configOptions["custom-rendezvous-server"] || "";
             handler.msgbox("custom-server", "ID/Relay Server", "<div .form> \
-            <div><span style='width: 100px; display:inline-block'>ID Servidor: </span><input style='width: 250px' name='id' value='" + old_id + "' /></div> \
-            <div><span style='width: 100px; display:inline-block'>Servidor de Realay: </span><input style='width: 250px' name='relay' value='" + old_relay + "' /></div> \
+            <div><span style='width: 100px; display:inline-block'>ID Server: </span><input style='width: 250px' name='id' value='" + old_id + "' /></div> \
+            <div><span style='width: 100px; display:inline-block'>Relay Server: </span><input style='width: 250px' name='relay' value='" + old_relay + "' /></div> \
             </div> \
             ", function(res=null) {
                 if (!res) return;
@@ -299,11 +299,11 @@ class MyIdMenu: Reactor.Component {
             var name = handler.get_app_name();
             handler.msgbox("custom-nocancel-nook-hasclose", "About " + name, "<div style='line-height: 2em'> \
                 <div>Version: " + handler.get_version() + " \
-                <div .link .custom-event url='https://procfit.com.br/cliente-remoto-privacidade'>Declaração de privacidade</div> \
-                <div .link .custom-event url='https://procfit.com.br'>Forum</div> \
+                <div .link .custom-event url='http://rustdesk.com/privacy'>Privacy Statement</div> \
+                <div .link .custom-event url='http://forum.rustdesk.com'>Forum</div> \
                 <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2020 CarrieZ Studio \
                 <br /> Author: Carrie \
-                <p style='font-weight: bold'>Procfit</p>\
+                <p style='font-weight: bold'>Made with heart in this chaotic world!</p>\
                 </div>\
             </div>", function(el) {
                 if (el && el.attributes) {
@@ -512,8 +512,8 @@ class SystemError: Reactor.Component {
 class TrustMe: Reactor.Component {
     function render() {
         return <div .trust-me>
-            <div>Configuração de permissões</div>
-            <div>Para que seja possivel controlar seu desktop remotamente, é necessária a permissão "Accessibility"</div>
+            <div>Configuration Permissions</div>
+            <div>In order to control your Desktop remotely, you need to grant RustDesk "Accessibility" permissions</div>
             <div #trust-me .link>Configure</div>
         </div>;
     }
@@ -527,8 +527,8 @@ class TrustMe: Reactor.Component {
 class CanScreenRecording: Reactor.Component {
     function render() {
         return <div .trust-me>
-            <div>Configuração de permissões</div>
-            <div>Para que seja possivel controlar seu desktop remotamente, é necessária a permissão "Screen Recording"</div>
+            <div>Configuration Permissions</div>
+            <div>In order to access your Desktop remotely, you need to grant RustDesk "Screen Recording" permissions</div>
             <div #screen-recording .link>Configure</div>
         </div>;
     }
@@ -542,8 +542,8 @@ class CanScreenRecording: Reactor.Component {
 class FixWayland: Reactor.Component {
     function render() {
         return <div .trust-me>
-            <div>Aviso</div>
-            <div>Login usando o Wayland não é suportado</div>
+            <div>Warning</div>
+            <div>Login screen using Wayland is not supported</div>
             <div #fix-wayland .link>Fix it</div>
         </div>;
     }
@@ -611,19 +611,19 @@ class Password: Reactor.Component {
 
     event click $(li#set-password) {
         var me = this;
-        handler.msgbox("custom-password", "Configurar Senha", "<div .form .set-password> \
-            <div><span>Senha:</span><input|password(password) /></div> \
-            <div><span>Confirmação:</span><input|password(confirmation) /></div> \
+        handler.msgbox("custom-password", "Set Password", "<div .form .set-password> \
+            <div><span>Password:</span><input|password(password) /></div> \
+            <div><span>Confirmation:</span><input|password(confirmation) /></div> \
         </div> \
         ", function(res=null) {
             if (!res) return;
             var p0 = (res.password || "").trim();
             var p1 = (res.confirmation || "").trim();
             if (p0.length < 6) {
-                return "A senha deve ter ao menos 6 caracteres";
+                return "Too short, at least 6 characters.";
             }
             if (p0 != p1) {
-                return "A confirmação não é identica.";
+                return "The confirmation is not identical.";
             }
             handler.update_password(p0);
             me.update();

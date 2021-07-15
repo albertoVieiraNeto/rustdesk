@@ -39,18 +39,18 @@ class Body: Reactor.Component
                     </div>
                 </div>
                 <div />
-                {c.is_file_transfer || c.port_forward ? "" : <div>Permições</div>}
+                {c.is_file_transfer || c.port_forward ? "" : <div>Permissions</div>}
                 {c.is_file_transfer || c.port_forward ? "" : <div .permissions>
-                    <div class={!c.keyboard ? "disabled" : ""} title="Permitir usar teclado e mouse"><icon .keyboard /></div>
-                    <div class={!c.clipboard ? "disabled" : ""} title="Permitir usar a área de transferência"><icon .clipboard /></div>
-                    <div class={!c.audio ? "disabled" : ""} title="Permitir audio do computador"><icon .audio /></div>
+                    <div class={!c.keyboard ? "disabled" : ""} title="Allow using keyboard and mouse"><icon .keyboard /></div>
+                    <div class={!c.clipboard ? "disabled" : ""} title="Allow using clipboard"><icon .clipboard /></div>
+                    <div class={!c.audio ? "disabled" : ""} title="Allow hearing sound"><icon .audio /></div>
                 </div>}
                 {c.port_forward ? <div>Port Forwarding: {c.port_forward}</div> : ""}
                 <div style="size:*"/>
                 <div .buttons>
-                     {auth ? "" : <button .button tabindex="-1" #accept>Aceitar</button>}
-                     {auth ? "" : <button .button tabindex="-1" .outline #dismiss>Ignorar</button>}
-                     {auth ? <button .button tabindex="-1" #disconnect>Disconectar</button> : ""}
+                     {auth ? "" : <button .button tabindex="-1" #accept>Accept</button>}
+                     {auth ? "" : <button .button tabindex="-1" .outline #dismiss>Dismiss</button>}
+                     {auth ? <button .button tabindex="-1" #disconnect>Disconnect</button> : ""}
                 </div>
                 {c.is_file_transfer || c.port_forward ? "" : <div .chaticon>{svg_chat}</div>}
             </div>
