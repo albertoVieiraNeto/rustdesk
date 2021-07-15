@@ -67,16 +67,16 @@ class Header: Reactor.Component {
         var title_conn;
         if (this.secure_connection && this.direct_connection) {
             icon_conn = svg_secure;
-            title_conn = "Direct and secure connection";
+            title_conn = "Conexão direta e segura";
         } else if (this.secure_connection && !this.direct_connection) {
             icon_conn = svg_secure_relay;
-            title_conn = "Relayed and secure connection";
+            title_conn = "Conexão roteada e segura";
         } else if (!this.secure_connection && this.direct_connection) {
             icon_conn = svg_insecure;
-            title_conn = "Direct and insecure connection";
+            title_conn = "Conexão direta e insegura";
         } else {
             icon_conn = svg_insecure_relay;
-            title_conn = "Relayed and insecure connection";
+            title_conn = "Conexão roteada e insegura";
         }
         var title = handler.get_id();
         if (pi.hostname) title += "(" + pi.username + "@" + pi.hostname + ")";
@@ -253,11 +253,11 @@ class Header: Reactor.Component {
         if (!input_blocked) {
             handler.toggle_option("block-input");
             input_blocked = true;
-            $(#block-input).text = "Unblock user input";
+            $(#block-input).text = "Desbloquear input do usuário";
         } else {
             handler.toggle_option("unblock-input");
             input_blocked = false;
-            $(#block-input).text = "Block user input";
+            $(#block-input).text = "Bloquear input do usuário";
         }
     }
 
@@ -378,7 +378,7 @@ handler.newMessage = function(text) {
 }
 
 function sendMsg(text) {
-    chat_msgs.push({text: text, name: "me", time: getNowStr()});
+    chat_msgs.push({text: text, name: "Eu", time: getNowStr()});
     handler.send_chat(text);
     if (chatbox) chatbox.refresh();
 }

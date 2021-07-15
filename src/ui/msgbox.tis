@@ -81,9 +81,9 @@ class Body: Reactor.Component {
     function getInputPasswordContent() {
         var ts = remember ? { checked: true } : {};
         return <div .form>
-            <div>Please enter your password</div>
+            <div>Informe sua senha</div>
             <Password />
-            <div><button|checkbox(remember) {ts}>Remember password</button></div>
+            <div><button|checkbox(remember) {ts}>Lembrar</button></div>
         </div>;
     }
 
