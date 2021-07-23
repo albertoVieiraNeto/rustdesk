@@ -11,7 +11,7 @@
 ####################################################################
 # File Info
 
-!define PRODUCT_NAME "ProcfitRemote"
+!define PRODUCT_NAME "RustDesk"
 !define PRODUCT_DESCRIPTION "Instalador para ${PRODUCT_NAME}"
 !define COPYRIGHT "Copyright © 2021"
 !define VERSION "1.1.6"

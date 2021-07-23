@@ -147,12 +147,12 @@ class AudioInputs: Reactor.Component {
     function render() {
         if (!this.show) return <li />;
         var inputs = handler.get_sound_inputs();
-        if (is_win) inputs = ["System Sound"].concat(inputs);
+        if (is_win) inputs = ["Som do Sistema"].concat(inputs);
         if (!inputs.length) return <li style="display:hidden" />;
-        inputs = ["Mute"].concat(inputs);
+        inputs = ["Sem Som"].concat(inputs);
         var me = this;
         self.timer(1ms, function() { me.toggleMenuState() });
-        return <li>Audio Input
+        return <li>Transferência de Áudio
             <menu #audio-input key={inputs.length}>
                 {inputs.map(function(name) {
                 return <li id={name}><span>{svg_checkmark}</span>{name}</li>;
@@ -162,7 +162,7 @@ class AudioInputs: Reactor.Component {
     }
 
     function get_default() {
-        if (is_win) return "System Sound";
+        if (is_win) return "Som do Sistema";
         return "";
     }
 
@@ -204,19 +204,19 @@ class MyIdMenu: Reactor.Component {
     function renderPop() {
         return <popup>
             <menu.context #config-options>
-                <li #enable-keyboard><span>{svg_checkmark}</span>Enable Keyboard/Mouse</li>
-                <li #enable-clipboard><span>{svg_checkmark}</span>Enable Clipboard</li>
-                <li #enable-file-transfer><span>{svg_checkmark}</span>Enable File Transfer</li> 
-                <li #enable-tunnel><span>{svg_checkmark}</span>Enable TCP Tunneling</li>
+                <li #enable-keyboard><span>{svg_checkmark}</span>Habilitar Teclado/Mouse</li>
+                <li #enable-clipboard><span>{svg_checkmark}</span>Habilitar Área de transferência</li>
+                <li #enable-file-transfer><span>{svg_checkmark}</span>Habilitar Transferência de arquivo</li> 
+                <li #enable-tunnel><span>{svg_checkmark}</span>Habilitar Tunel TCP</li>
                 <AudioInputs />
                 <div .separator />
-                <li #whitelist title="Somente IPs na lista branca podem acessar">IP Whitelisting</li>
-                <li #custom-server>ID/Relay Server</li>
+                <li #whitelist title="Somente IPs na lista branca podem acessar">Lista branca de IPs</li>
+                <li #custom-server>Servidor ID/Redirecionamento</li>
                 <div .separator />
                 <li #stop-service>{service_stopped ? "Iniciar Serviço" : "Parar Serviço"}</li>
                 <div .separator />
                 <li #forum>Forum</li>
-                <li #about>About {handler.get_app_name()}</li>
+                <li #about>Sobre {handler.get_app_name()}</li>
             </menu>
         </popup>;
     }
@@ -326,28 +326,28 @@ class App: Reactor.Component
             <div .app>
               <popup>
               <menu.context #remote-context>
-                <li #connect>Connect</li>
-                <li #transfer>Transfer File</li>
-                <li #tunnel>TCP Tunneling</li>
+                <li #connect>Connectar</li>
+                <li #transfer>Transferir Arquivo</li>
+                <li #tunnel>Tunel TCP</li>
                 <li #rdp>RDP</li>
-                <li #rename>Rename</li>
-                <li #remove>Remove</li>
-                {is_win && <li #shortcut>Create Desktop Shortcut</li>}
+                <li #rename>Renomear</li>
+                <li #remove>Mover</li>
+                {is_win && <li #shortcut>Criar atalho no desktop</li>}
               </menu>
               </popup>
               <popup>
               <menu.context #edit-password-context>
-                <li #refresh-password>Refresh random password</li>
-                <li #set-password>Set your own password</li>
+                <li #refresh-password>Atualizar senha randômica</li>
+                <li #set-password>Configure sua senha</li>
               </menu>
               </popup>
                 <div .left-pane>
                     <div>
-                        <div .title>Your Desktop</div>
-                        <div .lighter-text>Your desktop can be accessed with this ID and password.</div>
+                        <div .title>Seu Desktop</div>
+                        <div .lighter-text>Seu Desktop pode ser acessado com esse ID e Senha.</div>
                         <div .your-desktop>
                         <MyIdMenu />
-                          {key_confirmed ? <input type="text" readonly value={formatId(handler.get_id())}/> : "Generating ..."}
+                          {key_confirmed ? <input type="text" readonly value={formatId(handler.get_id())}/> : "Gerando ..."}
                         </div>
                         <div .your-desktop>
                             <div>Password</div>
@@ -365,11 +365,11 @@ class App: Reactor.Component
                 <div .right-pane>
                     <div .right-content>
                         <div .card-connect>
-                            <div .title>Control Remote Desktop</div>
+                            <div .title>Acessar um Desktop Remoto</div>
                             <ID @{this.remote_id} />
                             <div .right-buttons>
-                                <button .button .outline #file-transfer>Transfer File</button>
-                                <button .button #connect>Connect</button>
+                                <button .button .outline #file-transfer>Transferir Arquivo</button>
+                                <button .button #connect>Conectar</button>
                             </div>
                         </div>
                         <RecentSessions @{this.recent_sessions} />
@@ -395,8 +395,8 @@ class App: Reactor.Component
 class InstalllMe: Reactor.Component {
     function render() {
         return <div .install-me>
-            <div>Install RustDesk</div>
-            <div #install-me .link>Install RustDesk on this computer ...</div>
+            <div>Installar o Serviço</div>
+            <div #install-me .link>Instalar neste computador ...</div>
         </div>;
     }
 
@@ -633,7 +633,7 @@ class Password: Reactor.Component {
 
 class ID: Reactor.Component {
     function render() {
-        return <input type="text" #remote_id .outline-focus novalue="Enter Remote ID" maxlength="13"
+        return <input type="text" #remote_id .outline-focus novalue="Informe o ID do Desktop Remoto" maxlength="13"
         value={formatId(handler.get_remote_id())} />;
     }
 
