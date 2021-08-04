@@ -19,18 +19,13 @@ fn find_package(name: &str) -> Vec<PathBuf> {
         "x64-osx".to_owned()
     } else if target_os == "windows" {
         "x64-windows-static".to_owned()
-    } else if target_os == "android" {
-        format!("{}-android-static", target_arch)
     } else {
-        "x64-linux".to_owned()
+        format!("{}-{}", target_arch, target_os)
     };
     println!("cargo:info={}", target);
     path.push("installed");
     path.push(target);
-    let mut lib = name.trim_start_matches("lib").to_string();
-    if lib == "vpx" && target_os == "windows" {
-        lib = format!("{}mt", lib);
-    }
+    let lib = name.trim_start_matches("lib").to_string();
     println!("{}", format!("cargo:rustc-link-lib=static={}", lib));
     println!(
         "{}",
@@ -52,9 +47,9 @@ fn generate_bindings(
 ) {
     let mut b = bindgen::builder()
         .header(ffi_header.to_str().unwrap())
-        .whitelist_type("^[vV].*")
-        .whitelist_var("^[vV].*")
-        .whitelist_function("^[vV].*")
+        .allowlist_type("^[vV].*")
+        .allowlist_var("^[vV].*")
+        .allowlist_function("^[vV].*")
         .rustified_enum("^v.*")
         .trust_clang_mangling(false)
         .layout_tests(false) // breaks 32/64-bit compat

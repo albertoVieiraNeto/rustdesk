@@ -37,6 +37,12 @@ fn get_msgbox() -> String {
 }
 
 pub fn start(args: &mut [String]) {
+    // https://github.com/c-smile/sciter-sdk/blob/master/include/sciter-x-types.h
+    // https://github.com/rustdesk/rustdesk/issues/132#issuecomment-886069737
+    #[cfg(windows)]
+    allow_err!(sciter::set_options(sciter::RuntimeOptions::GfxLayer(
+        sciter::GFX_LAYER::WARP
+    )));
     #[cfg(windows)]
     if args.len() > 0 && args[0] == "--tray" {
         let mut res;
@@ -135,6 +141,7 @@ pub fn start(args: &mut [String]) {
 
 #[cfg(windows)]
 fn start_tray() -> hbb_common::ResultType<()> {
+    /*
     let mut app = systray::Application::new()?;
     let icon = include_bytes!("./tray-icon.ico");
     app.set_icon_from_buffer(icon, 32, 32).unwrap();
@@ -173,6 +180,7 @@ fn start_tray() -> hbb_common::ResultType<()> {
         Ok::<_, systray::Error>(())
     })?;
     allow_err!(app.wait_for_message());
+    */
     Ok(())
 }
 
@@ -505,9 +513,9 @@ impl UI {
         format!("{}.{}", p.to_string_lossy(), self.get_software_ext())
     }
 
-    fn create_shortcut(&self, id: String) {
+    fn create_shortcut(&self, _id: String) {
         #[cfg(windows)]
-        crate::platform::windows::create_shortcut(&id).ok();
+        crate::platform::windows::create_shortcut(&_id).ok();
     }
 
     fn open_url(&self, url: String) {
