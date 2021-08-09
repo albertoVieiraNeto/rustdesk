@@ -644,7 +644,15 @@ impl Connection {
                 }
                 Some(message::Union::key_event(mut me)) => {
                     if self.keyboard {
-                        if me.press {
+                        // handle all down as press
+                        // fix unexpected repeating key on remote linux, seems also fix abnormal alt/shift, which
+                        // make sure all key are released
+                        let is_press = if cfg!(target_os = "linux") {
+                            (me.press || me.down) && !crate::is_modifier(&me)
+                        } else {
+                            me.press
+                        };
+                        if is_press {
                             if let Some(key_event::Union::unicode(_)) = me.union {
                                 handle_key(&me);
                             } else if let Some(key_event::Union::seq(_)) = me.union {
