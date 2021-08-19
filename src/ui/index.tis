@@ -342,7 +342,10 @@ class App: Reactor.Component
               </menu>
               </popup>
                 <div .left-pane>
-                    <div>
+                    <div .companyLogo>
+                        <img src="assets/logo.png" />
+                    </div>
+                    <div>                        
                         <div .title>Seu Desktop</div>
                         <div .lighter-text>Seu Desktop pode ser acessado com esse ID e Senha.</div>
                         <div .your-desktop>
@@ -361,6 +364,7 @@ class App: Reactor.Component
                     {is_can_screen_recording && !handler.is_process_trusted(false) ? <TrustMe /> : ""}
                     {system_error ? <SystemError /> : ""}
                     {!system_error && handler.is_login_wayland() ? <FixWayland /> : ""}
+                    
                 </div>
                 <div .right-pane>
                     <div .right-content>
@@ -395,7 +399,7 @@ class App: Reactor.Component
 class InstalllMe: Reactor.Component {
     function render() {
         return <div .install-me>
-            <div>Installar o Serviço</div>
+            <div>Instalar o Serviço</div>
             <div #install-me .link>Instalar neste computador ...</div>
         </div>;
     }
