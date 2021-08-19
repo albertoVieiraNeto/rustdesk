@@ -1134,6 +1134,8 @@ lazy_static::lazy_static! {
         ("VK_NUMPAD7", Key::ControlKey(ControlKey::Numpad7)),
         ("VK_NUMPAD8", Key::ControlKey(ControlKey::Numpad8)),
         ("VK_NUMPAD9", Key::ControlKey(ControlKey::Numpad9)),
+        ("Apps", Key::ControlKey(ControlKey::Apps)),
+        ("Meta", Key::ControlKey(ControlKey::Meta)),
         ("RAlt", Key::ControlKey(ControlKey::RAlt)),
         ("RWin", Key::ControlKey(ControlKey::RWin)),
         ("RControl", Key::ControlKey(ControlKey::RControl)),
@@ -1141,4 +1143,17 @@ lazy_static::lazy_static! {
         ("CTRL_ALT_DEL", Key::ControlKey(ControlKey::CtrlAltDel)),
         ("LOCK_SCREEN", Key::ControlKey(ControlKey::LockScreen)),
     ].iter().cloned().collect();
+}
+
+#[inline]
+pub fn check_if_retry(msgtype: &str, title: &str, text: &str) -> bool {
+    msgtype == "error"
+        && title == "Connection Error"
+        && !text.to_lowercase().contains("offline")
+        && !text.to_lowercase().contains("exist")
+        && !text.to_lowercase().contains("handshake")
+        && !text.to_lowercase().contains("failed")
+        && !text.to_lowercase().contains("resolve")
+        && !text.to_lowercase().contains("mismatch")
+        && !text.to_lowercase().contains("manually")
 }
