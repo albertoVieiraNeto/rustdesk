@@ -52,7 +52,7 @@ class RecentSessions: Reactor.Component {
         if (sessions.length == 0) return <span />;
         sessions = sessions.map(this.getSession);
         return <div style="width: *">
-            <div .recent-sessions-title>RECENT SESSIONS</div>
+            <div .recent-sessions-title>Conexões Recentes</div>
             <div .recent-sessions-content key={sessions.length}>
                 {sessions}
             </div>
@@ -720,7 +720,7 @@ function checkConnectStatus() {
             app.update();
         }
         if (handler.recent_sessions_updated()) {
-            stdout.println("recent sessions updated");
+            stdout.println("Conexoes recentes atualizadas");
             app.recent_sessions.update();
         }
         checkConnectStatus();
