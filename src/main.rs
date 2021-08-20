@@ -1,6 +1,7 @@
 // Specify the Windows subsystem to eliminate console window.
 // Requires Rust 1.18.
-//#![windows_subsystem = "windows"]
+//shows console when debugging, --release disables the console
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use hbb_common::log;
 use rustdesk::*;
