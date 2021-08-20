@@ -138,12 +138,7 @@ function createNewConnect(id, type) {
 
 var myIdMenu;
 var audioInputMenu;
-
-//settando servidor padrao cosmos.
-var configOptions = {
-    "custom-rendezvous-server": "tempremoteassistance.cosmospro.com.br",
-    "relay-server": "tempremoteassistance.cosmospro.com.br"
-};
+var configOptions = {};
 
 class AudioInputs: Reactor.Component {
     function this() {
