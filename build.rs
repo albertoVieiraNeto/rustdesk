@@ -1,9 +1,22 @@
 #[cfg(windows)]
 fn build_windows() {
     cc::Build::new().file("src/windows.cc").compile("windows");
+
     println!("cargo:rustc-link-lib=WtsApi32");
     println!("cargo:rerun-if-changed=build.rs");
     println!("cargo:rerun-if-changed=windows.cc");
+
+    //configure windows icon
+    let mut res = winres::WindowsResource::new();
+    res.set_icon("src/ui/assets/icon.ico");
+
+     match res.compile() {
+        Err(e) => {
+            eprintln!("Problema ao configurar o icone do executavel: {}", e);
+            std::process::exit(1);
+        }
+        Ok(_) => {}
+    }
 }
 
 #[cfg(all(windows, feature = "inline"))]
@@ -11,7 +24,7 @@ fn build_manifest() {
     use std::io::Write;
     if std::env::var("PROFILE").unwrap() == "release" {
         let mut res = winres::WindowsResource::new();
-        res.set_icon("icon.ico")
+        res.set_icon("src/ui/assets/icon.ico")
             .set_language(winapi::um::winnt::MAKELANGID(
                 winapi::um::winnt::LANG_ENGLISH,
                 winapi::um::winnt::SUBLANG_ENGLISH_US,

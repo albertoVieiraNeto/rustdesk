@@ -4,7 +4,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use hbb_common::log;
-use rustdesk::*;
+use cosmosprodeskviewclient::*;
 
 #[cfg(any(target_os = "android", target_os = "ios"))]
 fn main() {

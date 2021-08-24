@@ -275,11 +275,11 @@ class MyIdMenu: Reactor.Component {
             var name = handler.get_app_name();
             handler.msgbox("custom-nocancel-nook-hasclose", "About " + name, "<div style='line-height: 2em'> \
                 <div>Version: " + handler.get_version() + " \
-                <div .link .custom-event url='https://procfit.com.br/cliente-remoto-privacidade'>Declaração de privacidade</div> \
-                <div .link .custom-event url='https://procfit.com.br'>Forum</div> \
+                <div .link .custom-event url='https://www.cosmospro.com.br/cliente-remoto-privacidade'>Declaração de privacidade</div> \
+                <div .link .custom-event url='https://www.cosmospro.com.br'>Forum</div> \
                 <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2020 CarrieZ Studio \
                 <br /> Author: Carrie \
-                <p style='font-weight: bold'>Procfit</p>\
+                <p style='font-weight: bold'>CosmosPro</p>\
                 </div>\
             </div>", function(el) {
                 if (el && el.attributes) {

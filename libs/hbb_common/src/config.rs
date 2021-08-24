@@ -12,7 +12,7 @@ use std::{
     time::SystemTime,
 };
 
-pub const APP_NAME: &str = "CosmosTeamDesk";
+pub const APP_NAME: &str = "Cosmos Pro DeskView Client";
 pub const BIND_INTERFACE: &str = "0.0.0.0";
 pub const RENDEZVOUS_TIMEOUT: u64 = 12_000;
 pub const CONNECT_TIMEOUT: u64 = 18_000;

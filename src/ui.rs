@@ -152,7 +152,7 @@ pub fn start(args: &mut [String]) {
 fn start_tray() -> hbb_common::ResultType<()> {
     /*
     let mut app = systray::Application::new()?;
-    let icon = include_bytes!("./tray-icon.ico");
+    let icon = include_bytes!("./src/ui/icon.ico");
     app.set_icon_from_buffer(icon, 32, 32).unwrap();
     app.add_menu_item("Open Window", |_| {
         crate::run_me(Vec::<&str>::new()).ok();

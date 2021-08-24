@@ -45,7 +45,7 @@ pub fn is_process_trusted(prompt: bool) -> bool {
 
 // macOS >= 10.15
 // https://stackoverflow.com/questions/56597221/detecting-screen-recording-settings-on-macos-catalina/
-// remove just one app from all the permissions: tccutil reset All com.carriez.rustdesk
+// remove just one app from all the permissions: tccutil reset All com.cosmos.CosmosProDeskViewClient
 pub fn is_can_screen_recording(prompt: bool) -> bool {
     let mut can_record_screen: bool = false;
     unsafe {
