@@ -48,7 +48,7 @@ cpal = { git = "https://github.com/rustaudio/cpal" }
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 machine-uid = "0.2"
 mac_address = "1.1"
-sciter-rs = { git = "https://github.com/open-trade/rust-sciter", branch = "dyn" }
+sciter-rs = { path = "libs/sciter-rs" }
 ctrlc = "3.2"
 arboard = "2.0"
 
@@ -77,7 +77,7 @@ psutil = "3.2"
 android_logger = "0.9"
 
 [workspace]
-members = ["libs/scrap", "libs/hbb_common", "libs/enigo"]
+members = ["libs/scrap", "libs/hbb_common", "libs/enigo" ]
 
 [package.metadata.winres]
 LegalCopyright = "Copyright © 2020"
@@ -96,7 +96,7 @@ hbb_common = { path = "libs/hbb_common" }
 hound = "3.4"
 
 [package.metadata.bundle]
-name = "RustDesk"
+name = "CosmosTeamDesk"
 identifier = "com.carriez.rustdesk"
 icon = ["32x32.png", "128x128.png", "128x128@2x.png"]
 deb_depends = ["libgtk-3-0", "libxcb-randr0", "libxdo3", "libxfixes3", "libxcb-shape0", "libxcb-xfixes0", "libasound2", "libsystemd0", "pulseaudio"]
