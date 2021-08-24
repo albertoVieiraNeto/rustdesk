@@ -1,26 +1,26 @@
-#Geração da sciter.static.dll
+#### Geração da sciter.static.dll
 - gerar a biblioteca sciter.static.lib a partir do codigo fonte do svn da sciter.
 - no projeto sciter.static.csproj desabilitar a propriedade "Whole program optimization" no compilador, este projeto esta dentro da sciter.static.sln.
 - compilar em ordem a sciter.sln e depois a sciter.static.sln, existe uma dependencia de executavel.
 - isso ira gerar a sciter.static.lib dentro da pasta lib.win na raiz do svn.
 
-#Empacotamento da UI
-`
+#### Empacotamento da UI
+
 ``packfolder.exe <pasta_projeto>/src/ui <pasta_projeto>/src/resources.rc -binary``
 
 - executar o comando a partir da raiz do projeto.
 - este comando ira gerar um binario que sera usado dentro do rust com o comando include_bytes. ira permitir que seja gerado somente um executavel.
 
-#Colocando as libs no projeto
+#### Colocando as libs no projeto
 - as libs atls.lib e sciter.static.lib devem ser colocadas na raiz do projeto.
 - a biblioteca atls.lib é instalada junto com os pacotes atl e mfc usando o visual studio instaler.
 
-#Ambiente
+#### Ambiente
 - hoje so prevemos o uso do windows, porem o projeto pode ser usado em outros sistemas operacionais.
 - durante o processo de compilacao, o mesmo compilador deve ser usado na geracao das libs e do projeto rust.
 - durante o processo de geraçao das dependencias atente-se a usar a mesma arquitetura (x86/x64) tanto para o rust quando as libs.
 
-#readme do fork
+#### readme do fork
 
 <p align="center">
   <img src="logo-header.svg" alt="RustDesk - Your remote desktop"><br>
