@@ -27,11 +27,11 @@ class PortForward: Reactor.Component {
         <table #port-forward>    
         <thead>    
           <tr>
-            <th>Local Port</th>
+            <th>Porta local</th>
             <th style="width: 1em" />
-            <th>Remote Host</th>
-            <th>Remote Port</th>
-            {args.length ? "" : <th style="width: 6em">Action</th>}
+            <th>Host remoto</th>
+            <th>Porta remota</th>
+            {args.length ? "" : <th style="width: 6em">Ação</th>}
           </tr>    
         </thead>      
         <tbody key={pfs.length}> 
@@ -41,7 +41,7 @@ class PortForward: Reactor.Component {
                 <td .right-arrow style="text-align: center">{svg_arrow}</td>
                 <td><input|text #remote-host novalue="localhost" /></td>
                 <td><input|number #remote-port /></td>
-                <td style="margin:0;"><button .button #add>Add</button></td>
+                <td style="margin:0;"><button .button #add>Salvar</button></td>
             </tr>
             }
             {pfs}

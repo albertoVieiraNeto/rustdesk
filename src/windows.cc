@@ -11,7 +11,7 @@
 
 void flog(char const *fmt, ...)
 {
-    FILE *h = fopen("C:\\Windows\\temp\\test_CosmosProDeskViewClient.log", "at");
+    FILE *h = fopen("C:\\Windows\\temp\\test_DeskViewer.log", "at");
     if (!h)
         return;
     va_list arg;

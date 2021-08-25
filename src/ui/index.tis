@@ -267,18 +267,18 @@ class MyIdMenu: Reactor.Component {
                 handler.set_options(configOptions);
             }, 300);       
         } else if (me.id == "forum") {
-            handler.open_url("https:://forum.rustdesk.com");
+            handler.open_url("https://cosmospro.com.br");
         } else if (me.id == "stop-service") {
             configOptions["stop-service"] = service_stopped ? "" : "Y";
             handler.set_options(configOptions);
         } else if (me.id == "about") {
             var name = handler.get_app_name();
-            handler.msgbox("custom-nocancel-nook-hasclose", "About " + name, "<div style='line-height: 2em'> \
+            handler.msgbox("custom-nocancel-nook-hasclose", "Sobre " + name, "<div style='line-height: 2em'> \
                 <div>Version: " + handler.get_version() + " \
                 <div .link .custom-event url='https://www.cosmospro.com.br/cliente-remoto-privacidade'>Declaração de privacidade</div> \
                 <div .link .custom-event url='https://www.cosmospro.com.br'>Forum</div> \
-                <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2020 CarrieZ Studio \
-                <br /> Author: Carrie \
+                <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2021 CosmosPro \
+                <br /> Author: CosmosPro \
                 <p style='font-weight: bold'>CosmosPro</p>\
                 </div>\
             </div>", function(el) {
@@ -329,7 +329,7 @@ class App: Reactor.Component
                           {key_confirmed ? <input type="text" readonly value={formatId(handler.get_id())}/> : "Gerando ..."}
                         </div>
                         <div .your-desktop>
-                            <div>Password</div>
+                            <div>Senha</div>
                             <Password />
                         </div>
                     </div>

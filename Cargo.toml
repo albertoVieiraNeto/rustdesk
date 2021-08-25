@@ -1,5 +1,5 @@
 [package]
-name = "cosmosprodeskviewclient"
+name = "deskviewer"
 version = "1.1.6"
 authors = ["Cosmospro <contato@cosmospro.com.br>"]
 edition = "2018"
@@ -82,7 +82,7 @@ members = ["libs/scrap", "libs/hbb_common", "libs/enigo" ]
 [package.metadata.winres]
 LegalCopyright = "Copyright © 2021"
 # this FileDescription overrides package.description
-FileDescription = "CosmosProDeskViewClient"
+FileDescription = "DeskViewer"
 
 [target.'cfg(target_os="windows")'.build-dependencies]
 winres = "0.1"
@@ -96,14 +96,14 @@ hbb_common = { path = "libs/hbb_common" }
 hound = "3.4"
 
 [package.metadata.bundle]
-name = "CosmosProDeskViewClient"
-identifier = "com.cosmos.CosmosProDeskViewClient"
+name = "DeskViewer"
+identifier = "com.cosmos.DeskViewer"
 icon = ["32x32.png", "128x128.png", "128x128@2x.png"]
 deb_depends = ["libgtk-3-0", "libxcb-randr0", "libxdo3", "libxfixes3", "libxcb-shape0", "libxcb-xfixes0", "libasound2", "libsystemd0", "pulseaudio"]
 osx_minimum_system_version = "10.14"
 
 #https://github.com/johnthagen/min-sized-rust
-#!!! rembember call "strip target/release/CosmosProDeskViewClient"
+#!!! rembember call "strip target/release/DeskViewer"
 # which reduce binary size a lot
 [profile.release]
 #lto = true

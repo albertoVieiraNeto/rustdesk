@@ -143,11 +143,11 @@ impl Connection {
                         }
                         ipc::Data::Close => {
                             let mut misc = Misc::new();
-                            misc.set_close_reason("Closed manually by the peer".into());
+                            misc.set_close_reason("Fechado manualmente".into());
                             let mut msg_out = Message::new();
                             msg_out.set_misc(misc);
                             conn.send(msg_out).await;
-                            conn.on_close("Close requested from connection manager", false);
+                            conn.on_close("Fechamento requisitado pelo gerenciador de conexão", false);
                             break;
                         }
                         ipc::Data::ChatMessage{text} => {

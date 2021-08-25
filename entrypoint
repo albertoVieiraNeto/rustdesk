@@ -8,7 +8,7 @@ if [ "$(id -u)" != "${PUID:-1000}" ] || [ "$(id -g)" != "${PGID:-1000}" ]; then
   exit 0
 fi
 
-cd $HOME/cosmosprodeskviewclient
+cd $HOME/deskviewer
 . $HOME/.cargo/env
 
 argv=$@

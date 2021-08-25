@@ -33,11 +33,11 @@ class Body: Reactor.Component
                     <div>
                         <div .id style="font-weight: bold; font-size: 1.2em;">{c.name}</div>
                         <div .id>({c.peer_id})</div>
-                        <div style="margin-top: 1.2em">Connected <span #time>{getElaspsed(c.time)}</span></div>
+                        <div style="margin-top: 1.2em">Conectado <span #time>{getElaspsed(c.time)}</span></div>
                     </div>
                 </div>
                 <div />
-                {c.is_file_transfer || c.port_forward ? "" : <div>Permições</div>}
+                {c.is_file_transfer || c.port_forward ? "" : <div>Permissões</div>}
                 {c.is_file_transfer || c.port_forward ? "" : <div .permissions>
                     <div class={!c.keyboard ? "disabled" : ""} title="Permitir usar teclado e mouse"><icon .keyboard /></div>
                     <div class={!c.clipboard ? "disabled" : ""} title="Permitir usar a área de transferência"><icon .clipboard /></div>
@@ -48,7 +48,7 @@ class Body: Reactor.Component
                 <div .buttons>
                      {auth ? "" : <button .button tabindex="-1" #accept>Aceitar</button>}
                      {auth ? "" : <button .button tabindex="-1" .outline #dismiss>Ignorar</button>}
-                     {auth ? <button .button tabindex="-1" #disconnect>Disconectar</button> : ""}
+                     {auth ? <button .button tabindex="-1" #disconnect>Desconectar</button> : ""}
                 </div>
                 {c.is_file_transfer || c.port_forward ? "" : <div .chaticon>{svg_chat}</div>}
             </div>

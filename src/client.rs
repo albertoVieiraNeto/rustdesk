@@ -953,7 +953,7 @@ pub async fn handle_hash(
     if password.is_empty() {
         // login without password, the remote side can click accept
         send_login(lc.clone(), Vec::new(), peer).await;
-        interface.msgbox("input-password", "Password Required", "");
+        interface.msgbox("input-password", "Senha requerida", "");
     } else {
         let mut hasher = Sha256::new();
         hasher.update(&password);

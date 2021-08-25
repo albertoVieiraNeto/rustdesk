@@ -1053,7 +1053,7 @@ async fn io_loop(handler: Handler) {
                 || handler.args[2].parse::<i32>().unwrap_or(0) <= 0
                 || port <= 0
             {
-                handler.on_error("Invalid arguments, usage:<br><br> CosmosProDeskViewClient --port-forward remote-id listen-port remote-host remote-port");
+                handler.on_error("Invalid arguments, usage:<br><br> DeskViewer --port-forward remote-id listen-port remote-host remote-port");
             }
             let remote_host = handler.args[1].clone();
             let remote_port = handler.args[2].parse::<i32>().unwrap_or(0);
@@ -1724,7 +1724,7 @@ impl Interface for Handler {
         if self.is_file_transfer() {
             self.call("closeSuccess", &make_args!());
         } else if !self.is_port_forward() {
-            self.msgbox("success", "Successful", "Connected, waiting for image...");
+            self.msgbox("success", "Successful", "Conectado, aguardando por imagem...");
         }
         #[cfg(windows)]
         {

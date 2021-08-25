@@ -273,7 +273,7 @@ class FolderView : Reactor.Component {
     function renderOpBar() {
       if (this.is_remote) {
         return <div .toolbar .remote>
-          <div .send .button>{svg_send}<span>Receive</span></div>
+          <div .send .button>{svg_send}<span>Receber</span></div>
           <div .spacer></div>
           <div .add-folder .button>{svg_add_folder}</div>
           <div .trash .button>{svg_trash}</div>
@@ -283,7 +283,7 @@ class FolderView : Reactor.Component {
         <div .add-folder .button>{svg_add_folder}</div>
         <div .trash .button>{svg_trash}</div>
         <div .spacer></div>
-        <div .send .button><span>Send</span>{svg_send}</div>
+        <div .send .button><span>Enviar</span>{svg_send}</div>
       </div>;
     }
 
@@ -308,14 +308,14 @@ class FolderView : Reactor.Component {
       var id = (this.is_remote ? "remote" : "local") + "-folder-view";
       return <table @{this.table} .folder-view .has_current id={id}>    
         <thead>    
-          <tr><th></th><th .sortable>Name</th><th .sortable>Modified</th><th .sortable>Size</th></tr>    
+          <tr><th></th><th .sortable>Nome</th><th .sortable>Modificado</th><th .sortable>Tamanho</th></tr>    
         </thead>      
         <tbody> 
           {rows}
         </tbody>
         <popup>
           <menu.context id={id}>
-            <li #switch-hidden class={this.show_hidden ? "selected" : ""}><span>{svg_checkmark}</span>Show Hidden Files</li>
+            <li #switch-hidden class={this.show_hidden ? "selected" : ""}><span>{svg_checkmark}</span>Mostrar ocultos</li>
           </menu>
         </popup>
       </table>;

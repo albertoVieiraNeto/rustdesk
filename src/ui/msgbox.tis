@@ -133,10 +133,10 @@ class Body: Reactor.Component {
                 <div style="text-align: right;">
                     <span #error />
                     {show_progress ? <progress style={"color:" + color} /> : ""}
-                    {hasCancel || hasRetry ? <button .button #cancel .outline>{hasRetry ? "OK" : "Cancel"}</button> : ""}
+                    {hasCancel || hasRetry ? <button .button #cancel .outline>{hasRetry ? "OK" : "Cancelar"}</button> : ""}
                     {this.hasSkip() ? <button .button #skip .outline>Skip</button> : ""}
-                    {hasOk || hasRetry ? <button .button #submit>{hasRetry ? "Retry" : "OK"}</button> : ""}
-                    {hasClose ? <button .button #cancel .outline>Close</button> : ""}
+                    {hasOk || hasRetry ? <button .button #submit>{hasRetry ? "Re-tentar" : "OK"}</button> : ""}
+                    {hasClose ? <button .button #cancel .outline>Fechar</button> : ""}
                 </div>
             </div>
         </div>);

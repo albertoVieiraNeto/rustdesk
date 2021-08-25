@@ -248,7 +248,7 @@ function msgbox(type, title, text, callback, height, width, retry=0) {
 }
 
 function connecting() {
-    handler.msgbox("connecting", "Connecting...", "Connection in progress. Please wait.");
+    handler.msgbox("connecting", "Conectando...", "Tentando conectar. Por favor aguarde.");
 }
 
 handler.msgbox = function(type, title, text, callback=null, height=180, width=500, retry=0) {

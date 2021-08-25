@@ -4,7 +4,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use hbb_common::log;
-use cosmosprodeskviewclient::*;
+use deskviewer::*;
 
 #[cfg(any(target_os = "android", target_os = "ios"))]
 fn main() {
@@ -119,10 +119,10 @@ fn main() {
         "-p, --port-forward=[PORT-FORWARD-OPTIONS] 'Format: remote-id:local-port:remote-port[:remote-host]'
        -s, --server... 'Start server'",
     );
-    let matches = App::new("rustdesk")
+    let matches = App::new("deskviewer")
         .version(crate::VERSION)
-        .author("CarrieZ Studio<info@rustdesk.com>")
-        .about("RustDesk command line tool")
+        .author("CosmosPro<contato@cosmospro.com.br>")
+        .about("CosmosPro command line tool")
         .args_from_usage(&args)
         .get_matches();
     use hbb_common::env_logger::*;
