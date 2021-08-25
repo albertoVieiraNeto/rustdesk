@@ -215,7 +215,6 @@ class MyIdMenu: Reactor.Component {
                 <div .separator />
                 <li #stop-service class={service_stopped ? "line-through" : "selected"}><span>{svg_checkmark}</span>Habilitar Serviço</li>
                 <div .separator />
-                <li #forum>Forum</li>
                 <li #about>Sobre {handler.get_app_name()}</li>
             </menu>
         </popup>;
@@ -266,8 +265,6 @@ class MyIdMenu: Reactor.Component {
                 stdout.println("Lista Branca atualizada");
                 handler.set_options(configOptions);
             }, 300);       
-        } else if (me.id == "forum") {
-            handler.open_url("https://cosmospro.com.br");
         } else if (me.id == "stop-service") {
             configOptions["stop-service"] = service_stopped ? "" : "Y";
             handler.set_options(configOptions);
@@ -276,7 +273,7 @@ class MyIdMenu: Reactor.Component {
             handler.msgbox("custom-nocancel-nook-hasclose", "Sobre " + name, "<div style='line-height: 2em'> \
                 <div>Version: " + handler.get_version() + " \
                 <div .link .custom-event url='https://www.cosmospro.com.br/cliente-remoto-privacidade'>Declaração de privacidade</div> \
-                <div .link .custom-event url='https://www.cosmospro.com.br'>Forum</div> \
+                <div .link .custom-event url='https://www.cosmospro.com.br/donwload/DeskViewer.exe'>Download da ultima versão</div> \
                 <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2021 CosmosPro \
                 <br /> Author: CosmosPro \
                 <p style='font-weight: bold'>CosmosPro</p>\

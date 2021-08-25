@@ -136,13 +136,13 @@ impl Client {
                             if ph.socket_addr.is_empty() {
                                 match ph.failure.enum_value_or_default() {
                                     punch_hole_response::Failure::ID_NOT_EXIST => {
-                                        bail!("ID does not exist");
+                                        bail!("ID não existe");
                                     }
                                     punch_hole_response::Failure::OFFLINE => {
-                                        bail!("Remote desktop is offline");
+                                        bail!("O Host remoto esta offline");
                                     }
                                     punch_hole_response::Failure::LICENCE_MISMATCH => {
-                                        bail!("Key mismatch");
+                                        bail!("chave incorreta");
                                     }
                                     _ => {
                                         if !ph.other_failure.is_empty() {
