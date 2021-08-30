@@ -1139,7 +1139,7 @@ impl Remote {
                                 match res {
                                     Err(err) => {
                                         log::error!("Connection closed: {}", err);
-                                        self.handler.msgbox("error", "Connection Error", &err.to_string());
+                                        self.handler.msgbox("error", "Erro de Conexão", &err.to_string());
                                         break;
                                     }
                                     Ok(ref bytes) => {
@@ -1151,7 +1151,7 @@ impl Remote {
                                 }
                             } else {
                                 log::info!("Reset by the peer");
-                                self.handler.msgbox("error", "Connection Error", "Reset by the peer");
+                                self.handler.msgbox("error", "Erro de Conexão", "Reset by the peer");
                                 break;
                             }
                         }
@@ -1164,12 +1164,12 @@ impl Remote {
                         }
                         _ = self.timer.tick() => {
                             if last_recv_time.elapsed() >= SEC30 {
-                                self.handler.msgbox("error", "Connection Error", "Timeout");
+                                self.handler.msgbox("error", "Erro de Conexão", "Timeout");
                                 break;
                             }
                             if !self.read_jobs.is_empty() {
                                 if let Err(err) = fs::handle_read_jobs(&mut self.read_jobs, &mut peer).await {
-                                    self.handler.msgbox("error", "Connection Error", &err.to_string());
+                                    self.handler.msgbox("error", "Erro de Conexão", &err.to_string());
                                     break;
                                 }
                                 self.update_jobs_status();
@@ -1183,7 +1183,7 @@ impl Remote {
             }
             Err(err) => {
                 self.handler
-                    .msgbox("error", "Connection Error", &err.to_string());
+                    .msgbox("error", "Erro de Conexão", &err.to_string());
             }
         }
         if let Some(stop) = stop_clipboard {
@@ -1615,7 +1615,7 @@ impl Remote {
                         }
                     }
                     Some(misc::Union::close_reason(c)) => {
-                        self.handler.msgbox("error", "Connection Error", &c);
+                        self.handler.msgbox("error", "Erro de Conexão", &c);
                         return false;
                     }
                     _ => {}

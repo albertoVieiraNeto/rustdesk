@@ -1145,10 +1145,11 @@ lazy_static::lazy_static! {
     ].iter().cloned().collect();
 }
 
+//modificar para talvez usar um enumerador
 #[inline]
 pub fn check_if_retry(msgtype: &str, title: &str, text: &str) -> bool {
     msgtype == "error"
-        && title == "Connection Error"
+        && title == "Erro de Conexão" 
         && !text.to_lowercase().contains("offline")
         && !text.to_lowercase().contains("exist")
         && !text.to_lowercase().contains("handshake")

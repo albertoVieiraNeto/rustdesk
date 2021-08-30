@@ -112,7 +112,7 @@ event click $(menu#remote-context li) (evt, me) {
         createNewConnect(id, "port-forward");
     } else if (action == "rename") {
         var old_name = handler.get_peer_option(id, "alias");
-        handler.msgbox("custom-rename", "Rename", "<div .form> \
+        handler.msgbox("custom-rename", "Renomear", "<div .form> \
             <div><input name='name' style='width: *; height: 23px', value='" + old_name + "' /></div> \
             </div> \
             ", function(res=null) {
