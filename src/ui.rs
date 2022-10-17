@@ -101,7 +101,14 @@ pub fn start(args: &mut [String]) {
     allow_err!(sciter::set_options(sciter::RuntimeOptions::ScriptFeatures(
         ALLOW_FILE_IO as u8 | ALLOW_SOCKET_IO as u8 | ALLOW_EVAL as u8 | ALLOW_SYSINFO as u8
     )));
+
+    let resources = include_bytes!("resources.rc");
+
+    //cria a janela principal da aplicacao
     let mut frame = sciter::WindowBuilder::main_window().create();
+
+    frame.archive_handler(resources).expect("Invalid archive");
+
     #[cfg(windows)]
     allow_err!(sciter::set_options(sciter::RuntimeOptions::UxTheming(true)));
     frame.set_title(&crate::get_app_name());
@@ -175,16 +182,18 @@ pub fn start(args: &mut [String]) {
         } else {
             inline::get_remote()
         };
+
         frame.load_html(html.as_bytes(), Some(page));
     }
+    
     #[cfg(not(feature = "inline"))]
+  
+    //referente ao include_bytes/archive_handler
     frame.load_file(&format!(
-        "file://{}/src/ui/{}",
-        std::env::current_dir()
-            .map(|c| c.display().to_string())
-            .unwrap_or("".to_owned()),
+        "this://app/{}",
         page
     ));
+
     frame.run_app();
 }
 

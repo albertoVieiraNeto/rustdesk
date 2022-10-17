@@ -1,6 +1,7 @@
 // Specify the Windows subsystem to eliminate console window.
 // Requires Rust 1.18.
-//#![windows_subsystem = "windows"]
+//shows console when debugging, --release disables the console
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use librustdesk::*;
 
@@ -28,10 +29,10 @@ fn main() {
         -k, --key=[KEY] ''
        -s, --server... 'Start server'",
     );
-    let matches = App::new("rustdesk")
+    let matches = App::new("deskviewer")
         .version(crate::VERSION)
-        .author("CarrieZ Studio<info@rustdesk.com>")
-        .about("RustDesk command line tool")
+        .author("CosmosPro<contato@cosmospro.com.br>")
+        .about("CosmosPro command line tool")
         .args_from_usage(&args)
         .get_matches();
     use hbb_common::{env_logger::*, config::LocalConfig};

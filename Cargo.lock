@@ -1284,6 +1284,58 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "21d8ad60dd5b13a4ee6bd8fa2d5d88965c597c67bce32b5fc49c94f55cb50810"
 
 [[package]]
+name = "deskviewer"
+version = "1.1.6"
+dependencies = [
+ "android_logger",
+ "arboard",
+ "async-trait",
+ "cc",
+ "cfg-if 1.0.0",
+ "clap",
+ "cocoa",
+ "core-foundation 0.9.1",
+ "core-graphics",
+ "cpal",
+ "crc32fast",
+ "ctrlc",
+ "dasp",
+ "dispatch",
+ "enigo",
+ "flexi_logger",
+ "hbb_common",
+ "hound",
+ "lazy_static",
+ "libc",
+ "libpulse-binding",
+ "libpulse-simple-binding",
+ "mac_address",
+ "machine-uid",
+ "magnum-opus",
+ "objc",
+ "parity-tokio-ipc",
+ "psutil",
+ "repng",
+ "rpassword 5.0.1",
+ "rubato",
+ "runas",
+ "rust-pulsectl",
+ "samplerate",
+ "sciter-rs",
+ "scrap",
+ "serde 1.0.127",
+ "serde_derive",
+ "serde_json 1.0.66",
+ "sha2",
+ "uuid",
+ "whoami",
+ "winapi 0.3.9",
+ "windows-service",
+ "winreg 0.7.0",
+ "winres",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4536,7 +4588,6 @@ dependencies = [
 [[package]]
 name = "sciter-rs"
 version = "0.5.57"
-source = "git+https://github.com/open-trade/rust-sciter?branch=dyn#82025b9ba77d5ae14543009444033036dbe25917"
 dependencies = [
  "lazy_static",
  "libc",
