@@ -5,7 +5,7 @@ authors = ["deskviewer <contato@cosmospro.com.br>"]
 edition = "2021"
 build= "build.rs"
 description = "A remote control software."
-default-run = "rustdesk"
+default-run = "deskviewer"
 
 [lib]
 name = "librustdesk"

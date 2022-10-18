@@ -62,8 +62,11 @@ const CHARS: &'static [char] = &[
 ];
 
 pub const RENDEZVOUS_SERVERS: &'static [&'static str] = &[
-    "tempremoteassistance.cosmospro.com.br"
+    //"tempremoteassistance.cosmospro.com.br"
+    "conferencia.cosmospro.com.br"
+    //"172.26.176.1"
 ];
+
 pub const RS_PUB_KEY: &'static str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
